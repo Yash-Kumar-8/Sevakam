@@ -44,6 +44,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 - **Developer:** Yash Kumar Choudhary
-- **GitHub:** [your-username](https://github.com/your-username)
-- **Email:** your-email@example.com
+- **GitHub:** [Yash-Kumar-8](https://github.com/Yash-Kumar-8)
+- **Email:** anandyash623@gmail.com
+
 
