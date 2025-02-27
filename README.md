@@ -39,9 +39,6 @@ cd sevakam
 - Real-time verification of service providers
 - Loyalty rewards and referral programs
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 - **Developer:** Yash Kumar Choudhary
 - **GitHub:** [Yash-Kumar-8](https://github.com/Yash-Kumar-8)
