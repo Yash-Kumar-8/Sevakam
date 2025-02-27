@@ -22,7 +22,7 @@ public class DatabaseHelperCart extends SQLiteOpenHelper {
 
     public DatabaseHelperCart(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context;
+        this.context = context;
     }
 
     @Override
