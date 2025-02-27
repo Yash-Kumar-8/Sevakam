@@ -1,10 +1,13 @@
 package com.example.sevakam.activities.user;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,7 @@ public class ServicePageActivity extends AppCompatActivity {
 
     ImageView service_image;
     TextView service_name, service_detail, service_cost;
+    Button add_cart_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class ServicePageActivity extends AppCompatActivity {
         service_name = findViewById(R.id.service_name);
         service_detail = findViewById(R.id.service_detail);
         service_cost = findViewById(R.id.service_cost);
+        add_cart_btn = findViewById(R.id.add_cart);
 
         String name = getIntent().getStringExtra("SERVICE_NAME");
         String cost = getIntent().getStringExtra("SERVICE_COST");
@@ -43,6 +48,9 @@ public class ServicePageActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
             service_image.setImageBitmap(bitmap);
         }
+
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        String userEmail = sharedPreferences.getString("USER_EMAIL", ""); // Retrieve user email
 
 
 

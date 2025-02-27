@@ -66,17 +66,41 @@ public class UserLoginActivity extends AppCompatActivity {
             }
         });
 
+//        login_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                boolean islogged = dbHelper.checkUser(user_mail.getText().toString(), login_password.getText().toString());
+//                if (islogged){
+//                    Intent intent = new Intent(UserLoginActivity.this, HomePage.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                else{
+//                    Toast.makeText(UserLoginActivity.this, "Login Failed !", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean islogged = dbHelper.checkUser(user_mail.getText().toString(), login_password.getText().toString());
-                if (islogged){
+                String email = user_mail.getText().toString();
+                String password = login_password.getText().toString();
+
+                if (dbHelper.checkUser(email, password)) {
+                    // Store user email in SharedPreferences
+                    getSharedPreferences("UserSession", MODE_PRIVATE)
+                            .edit()
+                            .putString("USER_EMAIL", email)
+                            .apply();
+
+                    Toast.makeText(UserLoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(UserLoginActivity.this, HomePage.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
-                    Toast.makeText(UserLoginActivity.this, "Login Failed !", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UserLoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
