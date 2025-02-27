@@ -23,7 +23,7 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
     private static final String COLUMN_CATEGORY = "category_name";
     private static final String COLUMN_COST = "service_cost";
     private static final String COLUMN_DETAIL = "service_detail";
-    private static final String COLUMN_IMAGE = "_image";
+    private static final String COLUMN_IMAGE = "service_image";
 
     public DatabaseHelperService(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
