@@ -25,7 +25,6 @@ public class DatabaseHelperCart extends SQLiteOpenHelper {
     private static final String COLUMN_IMAGE = "service_image";
     private static final String COLUMN_USERMAIL = "user_mail";
 
-
     public DatabaseHelperCart(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
