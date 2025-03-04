@@ -2,6 +2,7 @@ package com.example.sevakam.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
@@ -73,6 +74,25 @@ public class DatabaseHelperCart extends SQLiteOpenHelper {
     }
 
 
+    public Cursor readAllData() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public Cursor readSomeData(String userEmail) {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_USERMAIL + " = ?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, new String[]{userEmail});
+        }
+        return cursor;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

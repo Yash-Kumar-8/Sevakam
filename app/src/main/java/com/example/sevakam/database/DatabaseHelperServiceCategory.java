@@ -78,7 +78,7 @@ public class DatabaseHelperServiceCategory extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                categoryList.add(cursor.getString(0)); // Get the department name
+                categoryList.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
         cursor.close();

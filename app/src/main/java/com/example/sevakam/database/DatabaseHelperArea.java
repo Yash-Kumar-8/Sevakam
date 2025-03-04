@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelperArea extends SQLiteOpenHelper {
 
     private Context context;
@@ -78,4 +81,18 @@ public class DatabaseHelperArea extends SQLiteOpenHelper {
         }
     }
 
+    public List<String> getAllArea() {
+        List<String> AreaList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_NAME + " FROM " + TABLE_NAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                AreaList.add(cursor.getString(0)); // Get the department name
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return AreaList;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.sevakam.activities.user;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -94,9 +95,13 @@ public class UserLoginActivity extends AppCompatActivity {
                             .putString("USER_EMAIL", email)
                             .apply();
 
+                    SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+                    String userEmail = sharedPreferences.getString("USER_EMAIL", "");
+
                     Toast.makeText(UserLoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(UserLoginActivity.this, HomePage.class);
+                    intent.putExtra("USER_MAIL", userEmail);
                     startActivity(intent);
                     finish();
                 } else {

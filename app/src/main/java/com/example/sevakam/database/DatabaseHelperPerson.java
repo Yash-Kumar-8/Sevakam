@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelperPerson extends SQLiteOpenHelper {
 
     private Context context;
@@ -77,5 +80,18 @@ public class DatabaseHelperPerson extends SQLiteOpenHelper {
         }
     }
 
+    public List<String> getPersonsByCategory(String category) {
+        List<String> persons = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_NAME + " FROM " + TABLE_NAME + " WHERE " + COLUMN_CATEGORY + " = ?", new String[]{category});
+
+        if (cursor.moveToFirst()) {
+            do {
+                persons.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return persons;
+    }
 
 }

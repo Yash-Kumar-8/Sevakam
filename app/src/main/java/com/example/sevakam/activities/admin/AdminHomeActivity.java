@@ -16,7 +16,6 @@ import com.example.sevakam.R;
 public class AdminHomeActivity extends AppCompatActivity {
 
     Button manage_service, manage_service_person, manage_area, manage_order, logout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +25,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         manage_service = findViewById(R.id.manage_service_btn);
         manage_service_person = findViewById(R.id.manage_service_person_btn);
         manage_area = findViewById(R.id.manage_area_btn);
+        manage_order = findViewById(R.id.manage_order_btn);
 
 
         manage_service.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +48,14 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminHomeActivity.this, ManageAreaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        manage_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminHomeActivity.this, ManageOrderActivity.class);
                 startActivity(intent);
             }
         });

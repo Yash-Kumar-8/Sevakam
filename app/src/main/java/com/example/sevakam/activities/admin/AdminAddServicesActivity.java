@@ -46,11 +46,11 @@ public class AdminAddServicesActivity extends AppCompatActivity {
         select_image = findViewById(R.id.select_image);
         service_image = findViewById(R.id.imageView);
 
-        AutoCompleteTextView catogeryText = findViewById(R.id.service_cat_txt);
-        DatabaseHelperServiceCategory deptDB = new DatabaseHelperServiceCategory(this);
-        List<String> deptList = deptDB.getAllCategory();
+        AutoCompleteTextView categoryText = findViewById(R.id.service_cat_txt);
+        DatabaseHelperServiceCategory dbHelper = new DatabaseHelperServiceCategory(this);
+        List<String> deptList = dbHelper.getAllCategory();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, deptList);
-        catogeryText.setAdapter(adapter);
+        categoryText.setAdapter(adapter);
 
         select_image.setOnClickListener(view -> openImageChooser());
 
@@ -59,14 +59,13 @@ public class AdminAddServicesActivity extends AppCompatActivity {
                 DatabaseHelperService myDB = new DatabaseHelperService(AdminAddServicesActivity.this);
                 myDB.addService(service_name.getText().toString().trim(),
                         service_cost.getText().toString().trim(),
-                        catogeryText.getText().toString().trim(),
+                        categoryText.getText().toString().trim(),
                         about_service.getText().toString().trim(),
                         selectedImageBitmap);
                 Intent intent = new Intent(AdminAddServicesActivity.this, AdminServiceListActivity.class);
                 startActivity(intent);
                 finish();
             } else {
-                // Show error if no image selected
                 Toast.makeText(AdminAddServicesActivity.this, "Please select an image!", Toast.LENGTH_SHORT).show();
             }
         });

@@ -1,11 +1,13 @@
 package com.example.sevakam.activities.user;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,6 +35,7 @@ public class HomePage extends AppCompatActivity {
     ArrayList<byte[]> service_images;
     AdapterHomeCleaning adapterHomeCleaning;
     AdapterAllService adapterAllService;
+    ImageView mycart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,20 @@ public class HomePage extends AppCompatActivity {
 
         cleaning_view = findViewById(R.id.cleaning_recycler);
         all_service = findViewById(R.id.all_service);
+        mycart = findViewById(R.id.my_cart);
+
+        String email = getIntent().getStringExtra("USER_MAIL");
+
+        mycart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, MyCartActivity.class);
+                intent.putExtra("USER_MAIL", email);
+                startActivity(intent);
+            }
+        });
+
+
 
         serviceDB = new DatabaseHelperService(HomePage.this);
 

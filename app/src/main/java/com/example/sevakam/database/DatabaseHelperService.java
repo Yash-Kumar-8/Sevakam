@@ -16,7 +16,7 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Service.db";
-    private static int DATABASE_VERSION = 1;  // Increase version for schema change
+    private static int DATABASE_VERSION = 2;  // Increase version for schema change
     private static final String TABLE_NAME = "service";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_NAME = "service_name";
@@ -57,7 +57,6 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
             return;
         }
 
-        // Convert Bitmap to ByteArray
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] imageBytes = stream.toByteArray();
@@ -69,14 +68,14 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
         cv.put(COLUMN_IMAGE, imageBytes);
 
         long result = db.insert(TABLE_NAME, null, cv);
+
         if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
         }
     }
-
-
+    
     public Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -126,6 +125,20 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
             cursor.close();
             return "Service details not available";
         }
+    }
+
+    public String getCategoryNameByServiceName(String serviceName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String categoryName = null;
+
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_CATEGORY + " FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = ?", new String[]{serviceName});
+
+        if (cursor.moveToFirst()) {
+            categoryName = cursor.getString(0);
+        }
+
+        cursor.close();
+        return categoryName;
     }
 
 }
