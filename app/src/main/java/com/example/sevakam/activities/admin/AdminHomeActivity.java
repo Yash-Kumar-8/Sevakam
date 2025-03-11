@@ -66,7 +66,4 @@ public class AdminHomeActivity extends AppCompatActivity {
             return insets;
         });
     }
-
-
-
 }

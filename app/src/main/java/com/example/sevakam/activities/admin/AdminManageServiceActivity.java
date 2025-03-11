@@ -41,10 +41,6 @@ public class AdminManageServiceActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         all_service = findViewById(R.id.all_service);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         add_setvice_cat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +99,4 @@ public class AdminManageServiceActivity extends AppCompatActivity {
             Toast.makeText(this, "Invalid Data: No valid departments available", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
 }

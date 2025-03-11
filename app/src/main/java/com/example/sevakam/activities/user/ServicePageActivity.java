@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.sevakam.R;
 import com.example.sevakam.database.DatabaseHelperCart;
-import com.example.sevakam.database.DatabaseHelperServiceOrderRequest;
+import com.example.sevakam.database.DatabaseHelperOrder;
 
 public class ServicePageActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class ServicePageActivity extends AppCompatActivity {
     TextView service_name, service_detail, service_cost;
     Button add_cart_btn, order_btn;
     DatabaseHelperCart dbHelper;
-    DatabaseHelperServiceOrderRequest dbHelperOrder;
+    DatabaseHelperOrder dbHelperOrder;
     Bitmap bitmap;
 
     @Override

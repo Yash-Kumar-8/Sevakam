@@ -141,4 +141,8 @@ public class DatabaseHelperService extends SQLiteOpenHelper {
         return categoryName;
     }
 
+    public Cursor getServicesByCategory(String categoryName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_CATEGORY + " = ?", new String[]{categoryName});
+    }
 }

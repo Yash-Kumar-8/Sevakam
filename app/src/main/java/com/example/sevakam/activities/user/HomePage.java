@@ -35,7 +35,7 @@ public class HomePage extends AppCompatActivity {
     ArrayList<byte[]> service_images;
     AdapterHomeCleaning adapterHomeCleaning;
     AdapterAllService adapterAllService;
-    ImageView mycart;
+    ImageView mycart, category, myOrders, profile, help;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,12 @@ public class HomePage extends AppCompatActivity {
 
         cleaning_view = findViewById(R.id.cleaning_recycler);
         all_service = findViewById(R.id.all_service);
+
         mycart = findViewById(R.id.my_cart);
+        category = findViewById(R.id.cat_page);
+        myOrders = findViewById(R.id.order_page);
+        profile = findViewById(R.id.profile_page);
+        help = findViewById(R.id.help_page);
 
         String email = getIntent().getStringExtra("USER_MAIL");
 
@@ -58,7 +63,30 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, CategoryPageActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, ProfileActivity.class);
+                intent.putExtra("USER_MAIL", email);
+                startActivity(intent);
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, HelpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         serviceDB = new DatabaseHelperService(HomePage.this);
 

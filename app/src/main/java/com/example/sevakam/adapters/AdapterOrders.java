@@ -21,13 +21,14 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.OrderViewH
 
     private Context context;
     private Activity activity;
-    private ArrayList<String> order_id, service_name, area_name, user_mail, landmark;
+    private ArrayList<String> order_id, service_name, area_name, user_mail, landmark, order_status;
 
     public AdapterOrders(Activity activity, Context context,
                              ArrayList<String> order_id,
                              ArrayList<String> service_name,
                              ArrayList<String> area_name,
                              ArrayList<String> user_mail,
+                             ArrayList<String> order_status,
                              ArrayList<String> landmark) {
         this.activity = activity;
         this.context = context;
@@ -35,6 +36,7 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.OrderViewH
         this.service_name = service_name;
         this.area_name = area_name;
         this.user_mail = user_mail;
+        this.order_status = order_status;
         this.landmark = landmark;
     }
 
@@ -55,7 +57,6 @@ public class AdapterOrders extends RecyclerView.Adapter<AdapterOrders.OrderViewH
         holder.land_mark.setText(landmark.get(position));
 
         holder.edit_order.setOnClickListener(v -> {
-            // Open a dialog or new activity to edit the order
             Intent intent = new Intent(context, UpdateOrderActivity.class);
             intent.putExtra("ORDER_ID", order_id.get(position));
             intent.putExtra("SERVICE_NAME", service_name.get(position));

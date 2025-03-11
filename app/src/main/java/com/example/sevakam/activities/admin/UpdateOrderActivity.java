@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,18 +16,17 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.sevakam.R;
 import com.example.sevakam.database.DatabaseHelperPerson;
 import com.example.sevakam.database.DatabaseHelperService;
-import com.example.sevakam.database.DatabaseHelperServiceOrderRequest;
+import com.example.sevakam.database.DatabaseHelperOrder;
 
 import java.util.List;
 
 public class UpdateOrderActivity extends AppCompatActivity {
 
-    EditText orderStatusEditText;
-    Spinner personSpinner;
+    Spinner personSpinner, order_status;
     Button updateButton;
     DatabaseHelperPerson dbHelperPerson;
     DatabaseHelperService dbHelperService;
-    DatabaseHelperServiceOrderRequest dbHelperOrder;
+    DatabaseHelperOrder dbHelperOrder;
     String orderId;
 
     @Override
@@ -37,12 +35,12 @@ public class UpdateOrderActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_update_order);
 
-        orderStatusEditText = findViewById(R.id.order_status);
+        order_status = findViewById(R.id.order_status);
         personSpinner = findViewById(R.id.person_spinner);
         updateButton = findViewById(R.id.update_order_btn);
 
         dbHelperPerson = new DatabaseHelperPerson(this);
-        dbHelperOrder = new DatabaseHelperServiceOrderRequest(this);
+        dbHelperOrder = new DatabaseHelperOrder(this);
         dbHelperService = new DatabaseHelperService(this);
 
         orderId = getIntent().getStringExtra("ORDER_ID");
@@ -55,10 +53,15 @@ public class UpdateOrderActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         personSpinner.setAdapter(adapter);
 
+        String[] statusOptions = {"Confirmed", "In Process", "Completed"};
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusOptions);
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        order_status.setAdapter(statusAdapter);
+
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String status = orderStatusEditText.getText().toString().trim();
+                String status = order_status.getSelectedItem().toString().trim();
                 String person = personSpinner.getSelectedItem().toString();
 
                 dbHelperOrder.updateOrder(orderId, status, person);

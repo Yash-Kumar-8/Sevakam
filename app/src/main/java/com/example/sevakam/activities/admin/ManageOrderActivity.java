@@ -15,19 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sevakam.R;
 import com.example.sevakam.adapters.AdapterOrders;
-import com.example.sevakam.adapters.CustomAdapterArea;
-import com.example.sevakam.adapters.CustomAdapterPerson;
-import com.example.sevakam.database.DatabaseHelperArea;
-import com.example.sevakam.database.DatabaseHelperPerson;
-import com.example.sevakam.database.DatabaseHelperServiceOrderRequest;
+import com.example.sevakam.database.DatabaseHelperOrder;
 
 import java.util.ArrayList;
 
 public class ManageOrderActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    DatabaseHelperServiceOrderRequest orderDB;
-    ArrayList<String> order_id, service_name, area_name, user_mail, landmark;
+    DatabaseHelperOrder orderDB;
+    ArrayList<String> order_id, service_name, area_name, user_mail, landmark, order_status;
     AdapterOrders adapterOrders;
 
     @Override
@@ -38,17 +34,18 @@ public class ManageOrderActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview_order);
 
-        orderDB = new DatabaseHelperServiceOrderRequest(ManageOrderActivity.this);
+        orderDB = new DatabaseHelperOrder(ManageOrderActivity.this);
 
         order_id = new ArrayList<>();
         service_name = new ArrayList<>();
         area_name = new ArrayList<>();
         user_mail = new ArrayList<>();
+        order_status = new ArrayList<>();
         landmark = new ArrayList<>();
 
         storeOrderInArray();
 
-        adapterOrders = new AdapterOrders(ManageOrderActivity.this, this, order_id, service_name, area_name, user_mail, landmark);
+        adapterOrders = new AdapterOrders(ManageOrderActivity.this, this, order_id, service_name, area_name, user_mail, order_status,landmark);
         recyclerView.setAdapter(adapterOrders);
         recyclerView.setLayoutManager((new LinearLayoutManager(ManageOrderActivity.this)));
 
@@ -75,7 +72,6 @@ public class ManageOrderActivity extends AppCompatActivity {
         }
     }
 
-
     void storeOrderInArray() {
         Cursor cursor = orderDB.readAllData();
         if(cursor.getCount() == 0){
@@ -87,6 +83,7 @@ public class ManageOrderActivity extends AppCompatActivity {
                 String areaName = cursor.getString(3);
                 String email = cursor.getString(5);
                 String landMark = cursor.getString(4);
+                String status = cursor.getString(6);
 
                 // Check if any field is blank ("" or null) and ignore invalid entries
                 if (id != null && !id.trim().isEmpty() &&
@@ -98,6 +95,7 @@ public class ManageOrderActivity extends AppCompatActivity {
                     service_name.add(serviceName);
                     area_name.add(areaName);
                     user_mail.add(email);
+                    order_status.add(status);
                     landmark.add(landMark);
                 }
             }

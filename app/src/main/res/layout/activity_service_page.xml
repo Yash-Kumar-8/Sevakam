@@ -5,91 +5,110 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ColorWhite"
     tools:context=".activities.user.ServicePageActivity">
 
+    <!-- Service Image with Rounded Corners and Shadow -->
     <ImageView
         android:id="@+id/service_img"
-        android:layout_width="375dp"
-        android:layout_height="375dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <!-- Service Name with Improved Typography -->
     <TextView
         android:id="@+id/service_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:text="TextView"
-        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:text="Service Name"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_img" />
 
+    <!-- Service Detail with Better Readability -->
     <TextView
         android:id="@+id/service_detail"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="And now I want to open the page that contains the detail about that service and fetch the service details from database When I click on any perticular service on home page recycler view Items "
-        android:textSize="16sp"
+        android:lineSpacingExtra="4sp"
+        android:text="And now I want to open the page that contains the detail about that service and fetch the service details from database When I click on any particular service on home page recycler view Items."
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_name" />
 
+    <!-- Currency Symbol with Consistent Styling -->
+
+    <!-- Service Cost with Highlighted Styling -->
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="₹"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/service_name"
-        app:layout_constraintStart_toEndOf="@+id/service_name"
-        app:layout_constraintTop_toTopOf="@+id/service_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/service_detail" />
 
     <TextView
         android:id="@+id/service_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="120"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView20"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toTopOf="@+id/textView20" />
 
+    <!-- Add to Cart Button with Rounded Corners and Elevation -->
     <Button
         android:id="@+id/add_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Add to cart"
-        android:textSize="16dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/light_blue"
+        android:elevation="4dp"
+        android:text="Add to Cart"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/order_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Order Now Button with Rounded Corners and Elevation -->
     <Button
         android:id="@+id/order_now"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/light_blue"
+        android:elevation="4dp"
         android:text="Order Now"
-        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

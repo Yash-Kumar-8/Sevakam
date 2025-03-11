@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class DatabaseHelperServiceOrderRequest extends SQLiteOpenHelper {
+public class DatabaseHelperOrder extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "orders.db";
@@ -25,7 +25,7 @@ public class DatabaseHelperServiceOrderRequest extends SQLiteOpenHelper {
     private static final String COLUMN_AREA = "area_name";
     private static final String COLUMN_LANDMARK = "landmark";
 
-    public DatabaseHelperServiceOrderRequest(@Nullable Context context) {
+    public DatabaseHelperOrder(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }

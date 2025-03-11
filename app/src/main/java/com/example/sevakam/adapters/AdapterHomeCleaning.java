@@ -93,6 +93,4 @@ public class AdapterHomeCleaning extends RecyclerView.Adapter<AdapterHomeCleanin
             service_cost_txt = itemView.findViewById(R.id.service_cost);
         }
     }
-
-
 }

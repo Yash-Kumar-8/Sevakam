@@ -78,4 +78,24 @@ public class DatabaseHelperRegister extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public String getPhoneNumber(String email) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT phone FROM users WHERE email = ?", new String[]{email});
+
+        if (cursor.moveToFirst()) {
+            String phoneNumber = cursor.getString(0);
+            cursor.close();
+            return phoneNumber;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    public Cursor getUserDetails(String email) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        return myDB.rawQuery("SELECT name, phone FROM users WHERE email = ?", new String[]{email});
+    }
+
 }

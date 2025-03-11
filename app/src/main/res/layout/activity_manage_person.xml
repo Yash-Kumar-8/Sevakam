@@ -48,5 +48,4 @@
         app:backgroundTint="@color/light_blue"
         app:tint="@color/dark_blue" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

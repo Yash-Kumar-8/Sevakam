@@ -100,46 +100,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_name_txt_upd" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/sign_mail_input"-->
-    <!--        android:layout_width="275dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:background="@drawable/input_bg"-->
-    <!--        android:drawableRight="@drawable/baseline_email"-->
-    <!--        android:drawablePadding="15dp"-->
-    <!--        android:ems="10"-->
-    <!--        android:hint="E-mail"-->
-    <!--        android:inputType="textEmailAddress"-->
-    <!--        android:paddingStart="20dp"-->
-    <!--        android:paddingTop="10dp"-->
-    <!--        android:paddingEnd="10dp"-->
-    <!--        android:paddingBottom="10dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        tools:layout_editor_absoluteY="313dp" />-->
-
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/textInputLayout"-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-<!--        android:layout_width="275dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_margin="20dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:background="@drawable/input_bg"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/service_cost_txt">-->
-
-<!--        <AutoCompleteTextView-->
-<!--            android:id="@+id/service_cat_txt"-->
-<!--            android:layout_width="275dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:background="@drawable/input_bg"-->
-<!--            android:layout_weight="1"-->
-<!--            android:clickable="true"-->
-<!--            android:focusable="false"-->
-<!--            android:inputType="none"-->
-<!--            android:hint="Service Category"/>-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

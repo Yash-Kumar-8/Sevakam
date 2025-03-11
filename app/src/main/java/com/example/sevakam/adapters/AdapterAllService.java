@@ -90,5 +90,4 @@ public class AdapterAllService extends RecyclerView.Adapter<AdapterAllService.Al
             service_cost_txt = itemView.findViewById(R.id.service_cost);
         }
     }
-
 }

@@ -88,24 +88,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/service_name_txt" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/sign_mail_input"-->
-<!--        android:layout_width="275dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:background="@drawable/input_bg"-->
-<!--        android:drawableRight="@drawable/baseline_email"-->
-<!--        android:drawablePadding="15dp"-->
-<!--        android:ems="10"-->
-<!--        android:hint="E-mail"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        android:paddingStart="20dp"-->
-<!--        android:paddingTop="10dp"-->
-<!--        android:paddingEnd="10dp"-->
-<!--        android:paddingBottom="10dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:layout_editor_absoluteY="313dp" />-->
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"

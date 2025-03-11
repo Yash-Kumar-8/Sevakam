@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class MyCartActivity extends AppCompatActivity {
 
-    ArrayList<String> cart_id, service_name, service_cost, service_detail;
+    ArrayList<String> cart_id, service_id, service_name, service_cost, service_detail, user_mail;
     RecyclerView recyclerView;
     ArrayList<byte[]> service_images;
     DatabaseHelperCart dbHelperCart;
@@ -44,10 +44,12 @@ public class MyCartActivity extends AppCompatActivity {
         service_detail = new ArrayList<>();
         service_cost = new ArrayList<>();
         service_images = new ArrayList<>();
+        user_mail = new ArrayList<>();
+        service_id = new ArrayList<>();
 
         storeCartDataInArray(userEmail);
 
-        adapterCart = new AdapterCart(MyCartActivity.this, this, cart_id, service_name, service_cost, service_detail, service_images);
+        adapterCart = new AdapterCart(MyCartActivity.this, this, cart_id, service_id , service_name, service_cost, service_detail, user_mail, service_images);
         recyclerView.setAdapter(adapterCart);
         recyclerView.setLayoutManager((new LinearLayoutManager(MyCartActivity.this)));
 
@@ -65,9 +67,11 @@ public class MyCartActivity extends AppCompatActivity {
         } else {
             while (cursor.moveToNext()) {
                 String id = cursor.getString(0);
+                String serviceId = cursor.getString(1);
                 String name = cursor.getString(2);
-                String detail = cursor.getString(3);
-                String cost = cursor.getString(4);
+                String detail = cursor.getString(4);
+                String cost = cursor.getString(3);
+                String mail = cursor.getString(6);
                 byte[] image = cursor.getBlob(5);  // Retrieve image
 
                 if (id != null && !id.trim().isEmpty() &&
@@ -77,10 +81,12 @@ public class MyCartActivity extends AppCompatActivity {
                         image != null) {
 
                     cart_id.add(id);
+                    service_id.add(serviceId);
                     service_name.add(name);
                     service_detail.add(detail);
                     service_cost.add(cost);
-                    service_images.add(image); // Add image to list
+                    user_mail.add(mail);
+                    service_images.add(image);
                 }
             }
         }

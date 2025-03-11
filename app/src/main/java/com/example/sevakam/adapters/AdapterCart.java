@@ -2,6 +2,7 @@ package com.example.sevakam.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -16,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sevakam.R;
+import com.example.sevakam.activities.admin.AdminUpdServiceListActivity;
+import com.example.sevakam.activities.user.PlaceOrderActivity;
 
 import java.util.ArrayList;
 
@@ -23,21 +26,25 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHolder
 
     private Context context;
     private Activity activity;
-    private ArrayList<String> cart_id, service_name, service_cost, service_detail;
+    private ArrayList<String> cart_id, service_id,service_name, service_cost, service_detail, user_mail;
     private ArrayList<byte[]> service_images;
 
     public AdapterCart(Activity activity, Context context,
                                ArrayList<String> cart_id,
+                               ArrayList<String> service_id,
                                ArrayList<String> service_name,
                                ArrayList<String> service_cost,
                                ArrayList<String> service_detail,
+                               ArrayList<String> user_mail,
                                ArrayList<byte[]> service_images) {  // Add images
         this.activity = activity;
         this.context = context;
         this.cart_id = cart_id;
+        this.service_id = service_id;
         this.service_name = service_name;
         this.service_cost = service_cost;
         this.service_detail = service_detail;
+        this.user_mail = user_mail;
         this.service_images = service_images;
     }
 
@@ -58,6 +65,20 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHolder
         byte[] imageBytes = service_images.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         holder.service_img.setImageBitmap(bitmap);
+
+        holder.buy_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlaceOrderActivity.class);
+                intent.putExtra("SERVICE_ID", String.valueOf(service_id.get(position)));
+                intent.putExtra("SERVICE_NAME", String.valueOf(service_name.get(position)));
+                intent.putExtra("SERVICE_COST", String.valueOf(service_cost.get(position)));
+                intent.putExtra("SERVICE_DETAIL", String.valueOf(service_detail.get(position)));
+                intent.putExtra("USER_MAIL", String.valueOf(user_mail.get(position)));
+                intent.putExtra("SERVICE_IMAGE", (service_images.get(position)));
+                activity.startActivityForResult(intent, 1);
+            }
+        });
     }
 
     @Override

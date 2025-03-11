@@ -105,6 +105,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/city_name_txt" />
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

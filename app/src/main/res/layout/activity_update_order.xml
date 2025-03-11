@@ -21,16 +21,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <Spinner
         android:id="@+id/order_status"
         android:layout_width="275dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/input_bg"
-        android:drawablePadding="15dp"
-        android:ems="10"
-        android:hint="Order Status"
-        android:inputType="text"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"

@@ -11,7 +11,7 @@
         android:id="@+id/service_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="275dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_margin="20dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"
@@ -33,7 +33,7 @@
         <AutoCompleteTextView
             android:id="@+id/select_area"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@drawable/input_bg"
             android:clickable="true"
@@ -57,9 +57,9 @@
         android:id="@+id/service_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="32dp"
         android:text="Sevakam is an easy-to-use Android application that helps people find and connect with trustworthy service profes sionals. These professionals can serve many types of ser vices like cleaning,"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,14 +99,18 @@
 
     <Button
         android:id="@+id/place_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
         android:text="Place Order"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView28"
@@ -119,6 +123,5 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/land_mark"
         app:layout_constraintTop_toBottomOf="@+id/land_mark" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
